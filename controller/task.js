@@ -39,16 +39,27 @@ const updateTask = async (req, res) => {
       runValidators: true,
     });
     if (!updateTask) {
-      res.status(404).json({ msg: `no task id : ${updateTask}` });
+      res.status(404).json({ msg: `no task id : ${userID}` });
     }
     res.status(200).json({ updateTask });
   } catch (error) {
-    res.status(500).json({ msg: `not validat : ${error}` });
+    res.status(500).json({ msg: error });
   }
 };
 
 const deleteTask = async (req, res) => {
-  res.send("delete task!");
+  try {
+    const { userId: userID } = req.params;
+    const taskdelet = await Task.findByIdAndDelete({ _id: userID });
+    if (!taskdelet) {
+      res.status(404).json({ msg: `no task id : ${userID}` });
+    }
+    if (taskdelet) {
+      res.status(200).json({ msg: "task deleted!" });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 //step-6
