@@ -10,8 +10,13 @@ const createProduct = async (req, res) => {
   }
 };
 
-const getAllProducts = (req, res) => {
-  res.send({ msg: "hello all products" });
+const getAllProducts = async (req, res) => {
+  try {
+    const allProduct = await Product.find(); // no use req.params or req.body just use find method !
+    res.status(200).json({ allProduct });
+  } catch (error) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 const getAllProductsStatic = async (req, res) => {
