@@ -13,7 +13,7 @@ const {
 router.route("/tasks").get(getAllTask).post(createTask);
 
 router
-  .route("/:userId")
+  .route("/tasks/:userId")
   .get(getSingleTask)
   .patch(updateTask)
   .delete(deleteTask);
