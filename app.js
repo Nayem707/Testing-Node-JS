@@ -8,6 +8,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const tasks = require("./routes/task");
-app.use("/api/v1/tasks", tasks);
+const productsRouter = require("./routes/products");
+const todo = require("./routes/todo");
+
+app.use("/api/v1", tasks, productsRouter, todo);
 
 module.exports = app;

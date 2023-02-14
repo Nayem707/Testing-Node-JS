@@ -10,7 +10,8 @@ const {
   deleteTask,
 } = require("../controller/task");
 
-router.route("/").get(getAllTask).post(createTask);
+router.route("/tasks").get(getAllTask).post(createTask);
+
 router
   .route("/:userId")
   .get(getSingleTask)
