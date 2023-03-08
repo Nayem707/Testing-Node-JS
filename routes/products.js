@@ -8,6 +8,6 @@ const {
 } = require("../controller/products");
 
 router.route("/products").get(getAllProducts).post(createProduct);
-router.route("/static").get(getAllProductsStatic);
+router.route("products/:id").get(getAllProductsStatic);
 
 module.exports = router;
